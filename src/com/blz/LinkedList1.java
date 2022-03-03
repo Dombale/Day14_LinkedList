@@ -1,16 +1,13 @@
 package com.blz;
 
-import java.util.Scanner;
-
 public class LinkedList1 {
-	Scanner scanner = new Scanner(System.in);
 	Node head;
 
 	// node creation
 	public class Node {
 
 		Object data;
-		Node next;
+		Node ref;
 
 		// constructor
 		public Node(Object data) {
@@ -29,7 +26,7 @@ public class LinkedList1 {
 			head = newNode;
 		// list is not empty
 		else {
-			newNode.next = head;
+			newNode.ref = head;
 			head = newNode;
 		}
 	}
@@ -46,12 +43,12 @@ public class LinkedList1 {
 			Node temp = head;
 			// traverse up to null elements
 			while (temp != null) {
-				if (temp.next != null)
+				if (temp.ref != null)
 					System.out.print(temp.data + " => ");
 				else
 					// display data
 					System.out.println(temp.data);
-				temp = temp.next;
+				temp = temp.ref;
 			}
 		}
 	}
@@ -66,16 +63,16 @@ public class LinkedList1 {
 		if (head == null)
 			head = newNode;
 		// list has only one element
-		else if (head.next == null)
-			head.next = newNode;
+		else if (head.ref == null)
+			head.ref = newNode;
 		// list has more than 1 elements
 		else {
 			Node temp = head;
 			// traverse up to null elements
-			while (temp.next != null) {
-				temp = temp.next;
+			while (temp.ref != null) {
+				temp = temp.ref;
 			}
-			temp.next = newNode;
+			temp.ref = newNode;
 		}
 	}
 
@@ -89,51 +86,7 @@ public class LinkedList1 {
 		// list is not empty
 		else {
 			Node temp = head;
-			head = temp.next;
-		}
-	}
-
-	/*
-	 * This is the method to delete last element
-	 */
-	public void deleteLast() {
-		// list is empty
-		if (head == null)
-			System.out.println("No elements to delete");
-		// list has only one element
-		else if (head.next == null)
-			head = null;
-		// list is not empty
-		else {
-			Node temp = head;
-			// traverse up to next of next node is null
-			while (temp.next.next != null) {
-				temp = temp.next;
-			}
-			temp.next = null;
-		}
-	}
-
-	/*
-	 * This is the method to add middle element
-	 */
-	public void addMiddle(Object data) {
-		// create new node
-		Node newNode = new Node(data);
-		// list is empty
-		if (head == null)
-			head = newNode;
-		// list has more than 1 elements
-		else {
-			Node temp = head;
-			System.out.println("Enter the data after which new data should be added");
-			Object data1 = scanner.nextInt();
-			// traverse up to data after which new data should be added
-			while (temp.data != data1) {
-				temp = temp.next;
-			}
-			newNode.next = temp.next;
-			temp.next = newNode;
+			head = temp.ref;
 		}
 	}
 }
