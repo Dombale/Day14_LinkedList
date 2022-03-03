@@ -1,13 +1,16 @@
 package com.blz;
 
+import java.util.Scanner;
+
 public class LinkedList1 {
+	Scanner scanner = new Scanner(System.in);
 	Node head;
 
 	// node creation
 	public class Node {
 
 		Object data;
-		Node ref;
+		Node next;
 
 		// constructor
 		public Node(Object data) {
@@ -16,7 +19,7 @@ public class LinkedList1 {
 	}
 
 	/*
-	 * This is the method to add first
+	 * This is the method to add first element
 	 */
 	public void addFirst(Object data) {
 		// create new node
@@ -26,13 +29,13 @@ public class LinkedList1 {
 			head = newNode;
 		// list is not empty
 		else {
-			newNode.ref = head;
+			newNode.next = head;
 			head = newNode;
 		}
 	}
 
 	/*
-	 * This is the method to display
+	 * This is the method to display elements
 	 */
 	public void display() {
 		// list is empty
@@ -43,16 +46,19 @@ public class LinkedList1 {
 			Node temp = head;
 			// traverse up to null elements
 			while (temp != null) {
-				if (temp.ref != null)
+				if (temp.next != null)
 					System.out.print(temp.data + " => ");
 				else
 					// display data
 					System.out.println(temp.data);
-				temp = temp.ref;
+				temp = temp.next;
 			}
 		}
 	}
 
+	/*
+	 * This is the method to add last element
+	 */
 	public void addLast(Object data) {
 		// create new node
 		Node newNode = new Node(data);
@@ -60,17 +66,74 @@ public class LinkedList1 {
 		if (head == null)
 			head = newNode;
 		// list has only one element
-		else if (head.ref == null)
-			head.ref = newNode;
+		else if (head.next == null)
+			head.next = newNode;
 		// list has more than 1 elements
 		else {
 			Node temp = head;
 			// traverse up to null elements
-			while (temp.ref != null) {
-				temp = temp.ref;
+			while (temp.next != null) {
+				temp = temp.next;
 			}
-			temp.ref = newNode;
+			temp.next = newNode;
 		}
 	}
 
+	/*
+	 * This is the method to delete first element
+	 */
+	public void deleteFirst() {
+		// list is empty
+		if (head == null)
+			System.out.println("Nothing to delete..");
+		// list is not empty
+		else {
+			Node temp = head;
+			head = temp.next;
+		}
+	}
+
+	/*
+	 * This is the method to delete last element
+	 */
+	public void deleteLast() {
+		// list is empty
+		if (head == null)
+			System.out.println("No elements to delete");
+		// list has only one element
+		else if (head.next == null)
+			head = null;
+		// list is not empty
+		else {
+			Node temp = head;
+			// traverse up to next of next node is null
+			while (temp.next.next != null) {
+				temp = temp.next;
+			}
+			temp.next = null;
+		}
+	}
+
+	/*
+	 * This is the method to add middle element
+	 */
+	public void addMiddle(Object data) {
+		// create new node
+		Node newNode = new Node(data);
+		// list is empty
+		if (head == null)
+			head = newNode;
+		// list has more than 1 elements
+		else {
+			Node temp = head;
+			System.out.println("Enter the data after which new data should be added");
+			Object data1 = scanner.nextInt();
+			// traverse up to data after which new data should be added
+			while (temp.data != data1) {
+				temp = temp.next;
+			}
+			newNode.next = temp.next;
+			temp.next = newNode;
+		}
+	}
 }
