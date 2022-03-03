@@ -6,8 +6,10 @@ public class LinkedListMain {
 		System.out.println("Welcome To Linked list !!!!");
 		LinkedList1 linkedList = new LinkedList1();
 		linkedList.addLast(56);
-		linkedList.addLast(70);
 		linkedList.addLast(30);
+		linkedList.addLast(70);
+		linkedList.display();
+		linkedList.addMiddle(40, 30);
 		linkedList.display();
 		linkedList.search(30);
 

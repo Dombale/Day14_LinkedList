@@ -117,7 +117,7 @@ public class LinkedList1 {
 	/*
 	 * This is the method to add middle element
 	 */
-	public void addMiddle(Object data) {
+	public void addMiddle(Object data, Object data1) {
 		// create new node
 		Node newNode = new Node(data);
 		// list is empty
@@ -127,7 +127,6 @@ public class LinkedList1 {
 		else {
 			Node temp = head;
 			System.out.println("Enter the data after which new data should be added");
-			Object data1 = scanner.nextInt();
 			// traverse up to data after which new data should be added
 			while (temp.data != data1) {
 				temp = temp.next;
