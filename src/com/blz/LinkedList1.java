@@ -3,46 +3,73 @@ package com.blz;
 public class LinkedList1 {
 	Node head;
 
-	class Node {
-		Object data;
-		Node next;// next is a reference
+	// node creation
+	public class Node {
 
+		Object data;
+		Node ref;
+
+		// constructor
 		public Node(Object data) {
 			this.data = data;
 		}
 	}
 
 	/*
-	 * Ability to create Linked List by adding 30 and 56 to 70 - Node with data 70
-	 * is First Created - Next 30 is added to 70 - Finally 56 is added to 30 -
-	 * LinkedList Sequence: 56->30->70
-	 */
-	/*
-	 * add first method
+	 * This is the method to add first
 	 */
 	public void addFirst(Object data) {
+		// create new node
 		Node newNode = new Node(data);
+		// list is empty
 		if (head == null)
 			head = newNode;
+		// list is not empty
 		else {
-			newNode.next = head;
+			newNode.ref = head;
 			head = newNode;
 		}
 	}
 
 	/*
-	 * display linked list method
+	 * This is the method to display
 	 */
 	public void display() {
+		// list is empty
 		if (head == null)
-			System.out.println("No elements to display");
+			System.out.println("No elements to display.");
+		// list is not empty
 		else {
 			Node temp = head;
-			while (temp.next != null) {
-				System.out.print(temp.data + " -> ");
-				temp = temp.next;
+			// traverse up to null elements
+			while (temp != null) {
+				if (temp.ref != null)
+					System.out.print(temp.data + " => ");
+				else
+					// display data
+					System.out.println(temp.data);
+				temp = temp.ref;
 			}
-			System.out.println(temp.data);
+		}
+	}
+
+	public void addLast(Object data) {
+		// create new node
+		Node newNode = new Node(data);
+		// list is empty
+		if (head == null)
+			head = newNode;
+		// list has only one element
+		else if (head.ref == null)
+			head.ref = newNode;
+		// list has more than 1 elements
+		else {
+			Node temp = head;
+			// traverse up to null elements
+			while (temp.ref != null) {
+				temp = temp.ref;
+			}
+			temp.ref = newNode;
 		}
 	}
 
