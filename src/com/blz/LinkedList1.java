@@ -199,5 +199,4 @@ public class LinkedList1 {
 			return count;
 		}
 	}
-
 }
